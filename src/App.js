@@ -3,6 +3,7 @@ import Note from './components/Note';
 import Footer from './components/Footer';
 import CreateArea from './components/CreateArea';
 import { useState } from 'react';
+import './App.css';
 
 function App() {
 
@@ -23,19 +24,25 @@ function App() {
 
   return (
     <>
-      <Header />
-      <CreateArea 
-        addBtnClick={addNote}
-      />
-      {notesLst.map( (note, index) => {
-        return <Note 
-          key={index}
-          id={index}
-          title={note.title}
-          content={note.content}
-          delBtnClick={deleteNote}
+      <div className='upper-content'>
+        <Header />
+        <CreateArea 
+          addBtnClick={addNote}
         />
-      })}
+        <div className='notes-container'>
+          <div className='notes'>
+            {notesLst.map( (note, index) => {
+              return <Note 
+                key={index}
+                id={index}
+                title={note.title}
+                content={note.content}
+                delBtnClick={deleteNote}
+              />
+            })}
+          </div>
+        </div>
+      </div>
       <Footer />
     </>
   );
